@@ -39,3 +39,26 @@ app.listen(PORT, () => {
   console.log(`🚀 Servidor en puerto ${PORT}`);
 });
 
+
+
+app.post("/login",(req, res)=>{
+
+    const {email, password} = req.body;
+    console.log("Email:", email);
+    console.log("Password:", password);
+
+
+    if(email ==="admin@gmail.com" && password ==="1234"){
+        return res.json({
+            message:"Login correcto",
+            token : "eyJhbGci"
+        });
+    }
+
+    res.status(401).json({
+        message: "Login incorrecto"
+    });
+
+
+
+});
