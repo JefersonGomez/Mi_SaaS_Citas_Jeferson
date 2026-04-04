@@ -86,7 +86,7 @@ function Dashboard() {
 
   // 🔥 Copiar link de reservas
   const handleCopyLink = () => {
-    const link = `https://TU-APP.vercel.app/book/${userId}`;
+    const link = `https://mi-saas-s-citas-jeferson.vercel.app/book/${userId}`;
     navigator.clipboard.writeText(link);
     alert("✅ Link copiado: " + link);
   };
