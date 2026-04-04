@@ -19,7 +19,7 @@ function Dashboard() {
 
   // 🔥 Cargar todas las citas
   const loadAppointments = () => {
-    fetch("http://localhost:3000/appointments", {
+    fetch("https://mi-saas-backend.onrender.com/appointments", {
       headers: { Authorization: token }
     })
       .then(res => res.json())
@@ -37,7 +37,7 @@ function Dashboard() {
     setSelectedDate(date);
     setSelectedTime("");
 
-    const res = await fetch(`http://localhost:3000/appointments/${date}`, {
+    const res = await fetch(`https://mi-saas-backend.onrender.com/appointments/${date}`, {
       headers: { Authorization: token }
     });
     const data = await res.json();
@@ -48,7 +48,7 @@ function Dashboard() {
   const handleCreate = async (e) => {
     e.preventDefault();
 
-    const response = await fetch("http://localhost:3000/appointments", {
+    const response = await fetch("https://mi-saas-backend.onrender.com/appointments", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -74,7 +74,7 @@ function Dashboard() {
   const handleDelete = async (id) => {
     if (!confirm("¿Seguro que quieres eliminar esta cita?")) return;
 
-    const response = await fetch(`http://localhost:3000/appointments/${id}`, {
+    const response = await fetch(`https://mi-saas-backend.onrender.com/appointments/${id}`, {
       method: "DELETE",
       headers: { Authorization: token }
     });
@@ -86,7 +86,7 @@ function Dashboard() {
 
   // 🔥 Copiar link de reservas
   const handleCopyLink = () => {
-    const link = `http://localhost:5173/book/${userId}`;
+    const link = `https://TU-APP.vercel.app/book/${userId}`;
     navigator.clipboard.writeText(link);
     alert("✅ Link copiado: " + link);
   };

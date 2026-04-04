@@ -24,7 +24,7 @@ function BookingPage() {
     setSelectedDate(date);
     setSelectedTime("");
 
-    const res = await fetch(`http://localhost:3000/book/${userId}/${date}`);
+    const res = await fetch(`https://mi-saas-backend.onrender.com/book/${userId}/${date}`);
     const data = await res.json();
     setOccupiedHours(data.occupiedHours || []);
   };
@@ -33,7 +33,7 @@ function BookingPage() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const response = await fetch(`http://localhost:3000/book/${userId}`, {
+    const response = await fetch(`https://mi-saas-backend.onrender.com/book/${userId}`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ name, date: selectedDate, time: selectedTime, notes })
