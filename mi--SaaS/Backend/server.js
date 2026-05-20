@@ -1,6 +1,6 @@
 // ===== 1. Cargar variables de entorno =====
 const dotenv = require('dotenv');
-const result = dotenv.config({ path: '../.env' }); // ✅ Capturamos el resultado
+dotenv.config(); // ✅ Capturamos el resultado
 
 if (result.error) {
   console.error('❌ Error cargando .env:', result.error.message);
@@ -26,7 +26,16 @@ const auth = require("./middleware/auth");
 const app = express();
 
 // ===== 4. Middleware =====
-app.use(cors());
+app.use(cors({
+  origin: [
+    'https://mi-saa-s-citas-jeferson.vercel.app',
+    'http://localhost:5173',
+    'http://localhost:3000'
+  ],
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+}));
+
 app.use(express.json());
 
 // ===== 5. Rutas =====
